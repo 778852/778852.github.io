@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        select{
+            margin-left:100px;
+            /*margin-right:150px;*/
+        }
+        input{
+            margin-left:50px;
+        }
+        body,ul,li,p{
+            margin:0;
+            padding:0;
+            list-style: none;
+        }
+        .box{
+            width:550px;
+            height:300px;
+            margin:0 auto;
+            /*border:1px solid red;*/
+            background: #52568b;
+        }
+        .inner-box{
+            width:100%;
+            height:250px;
+            /*background:red;*/
+        }
+        .inner1{
+            width:186px;
+            height:100%;
+            float:left;
+        }
+        .inner2{
+            width:89px;
+            height:100%;
+            /*background:yellow;*/
+            float:left;
+            border-left:1px solid rgba(183, 204, 162, 0.07);
+            border-right:1px solid rgba(183, 204, 162, 0.07);
+        }
+        .word1{
+            margin: 12px 0 0 12px;
+            font-size: 12px;
+            color:#fff;
+            text-shadow: 1px 1px 1px #555;
+            line-height: 12px;
+            float:left;
+        }
+        .word1-a{
+            width:80px;
+            height:100%;
+            float:left;
+        }
+        .word1-b{
+            /*margin-left:5px;*/
+            height:100%;
+            float:left;
+        }
+        .words{
+            overflow: hidden;
+            width:100%;
+            height:35px;
+        }
+        .word2{
+            width:82px;
+            height:18px;
+            margin-left:5px;
+            background:#afdb00;
+            float:left;
+            margin-top:12px;
+            line-height:18px;
+            text-align: center;
+            font-size:12px;
+            color:#fff;
+        }
+        .inner1-p{
+            /*padding-top:8px;*/
+            margin:0 auto;
+            width: 50px;
+            height: 50px;
+            /*background:blue;*/
+            overflow: hidden;
+            /*margin: 8px 0 0 60px;*/
+        }
+        .inner1-p img{
+            width:100%;
+            height:100%;
+            color:#fff;
+            background-color:#fff;
+        }
+        .inner1-a{
+            width:100%;
+            height:55px;
+        }
+        .wendu{
+            margin:0 auto;
+            height:55px;
+            width:102px;
+            /*overflow: hidden;*/
+        }
+        .wendu p{
+            font-size:48px;
+            color:#fff;
+            float:left;
+        }
+        .wendu div{
+            font-size: 14px;
+            color:#fff;
+            float:left;
+            margin-top:10px;
+        }
+        .inner1-b{
+            width:100%;
+            height:12px;
+            margin-top:12px;
+            font-size:12px;
+            color:#fff;
+            text-align:center;
+            text-shadow: 1px 1px 1px #555;
+        }
+        .inner1-c{
+            width:100%;
+            height:12px;
+            margin-top:12px;
+            font-size:12px;
+            color:#fff;
+            text-align:center;
+            text-shadow: 1px 1px 1px #555;
+        }
+        .inner1-d{
+            width:80px;
+            height:12px;
+            margin:12px auto 0;
+            font-size:12px;
+            color:#fff;
+            text-align:center;
+            /*background:red;*/
+            text-shadow: 1px 1px 1px #555;
+            display: flex;
+            justify-content: space-between;
+        }
+        .inner2-a,.inner3-a{
+            margin-top:56px;
+            text-align: center;
+            font-size: 12px;
+            text-shadow: 1px 1px 1px #555;
+            line-height: 1em;
+            color:#fff;
+        }
+        .inner4-a,.inner5-a{
+            margin-top:56px;
+            text-align: center;
+            font-size: 12px;
+            text-shadow: 1px 1px 1px #555;
+            line-height: 1em;
+            color:#fff;
+        }
+        .inner2-b,.inner3-b,.inner4-b,.inner5-b{
+            margin-top:8px;
+            font-size: 12px;
+            line-height:12px;
+            text-align: center;
+            opacity: 0.5;
+            color:#fff;
+        }
+        .inner2-p,.inner3-p,.inner4-p,.inner5-p{
+            width:50px;
+            height:50px;
+            margin:24px auto 0;
+            /*background:red;*/
+        }
+        .inner2-p img{
+            width:100%;
+            height:100%
+        }
+        .inner3-p img{
+            width:100%;
+            height:100%
+        }
+        .inner4-p img{
+            width:100%;
+            height:100%
+        }
+        .inner5-p img{
+            width:100%;
+            height:100%
+        }
+        .inner2-c,.inner2-d,.inner3-c,.inner3-d,.inner4-c,.inner4-d,.inner5-c,.inner5-d{
+            width:100%;
+            height:12px;
+            margin-top:12px;
+            font-size:12px;
+            color:#fff;
+            text-align:center;
+            text-shadow: 1px 1px 1px #555;
+        }
+        .inner2-e,.inner3-e,.inner4-e,.inner5-e{
+            width:80px;
+            height:12px;
+            margin:12px auto 0;
+            font-size:10px;
+            color:#fff;
+            text-align:center;
+            /*background:red;*/
+            text-shadow: 1px 1px 1px #555;
+            display: flex;
+            justify-content: space-between;
+        }
+
+    </style>
+</head>
+<body>
+<div class="box">
+    <select name="province" id="province"></select>
+    <select name="city" id="city"></select>
+    <input type="button" id="btn" value="获取">
+    <ul class="inner-box">
+        <li class="inner1">
+            <div class="word1">
+                <div class="word1-a">08月16日</div>
+                <div class="word1-b">周三</div>
+            </div>
+            <div class="words">
+                <div class="word1" id="word1">实施空气质量：</div>
+                <div class="word2">66良</div>
+            </div>
+            <div class="inner1-p">
+                <img src="天气图标/weathercn/11.png" alt="">
+            </div>
+            <div class="inner1-a">
+                <div class="wendu">
+                    <p>26</p>
+                    <div>℃</div><br>
+                    <div id="temp">多云</div>
+                </div>
+            </div>
+            <div class="inner1-b">18~30℃</div>
+            <div class="inner1-c">多云</div>
+            <div class="inner1-d">
+                <div class="inner1-e">东北风</div>
+                <div class="inner1-f">2级</div>
+            </div>
+        </li>
+        <li class="inner2">
+            <div class="inner2-a">周三</div>
+            <div class="inner2-b">08月16日</div>
+            <div class="inner2-p">
+                <img src="" alt="">
+            </div>
+            <div class="inner2-c">19~39℃</div>
+            <div class="inner2-d">多云</div>
+            <div class="inner2-e">
+                <div class="inner2-f">东北风</div>
+                <div class="inner2-h">2级</div>
+            </div>
+        </li>
+        <li class="inner2">
+            <div class="inner3-a">周四</div>
+            <div class="inner3-b">08月16日</div>
+            <div class="inner3-p">
+                <img src="" alt="">
+            </div>
+            <div class="inner3-c">19~39℃</div>
+            <div class="inner3-d">多云</div>
+            <div class="inner3-e">
+                <div class="inner3-f">东北风</div>
+                <div class="inner3-h">2级</div>
+            </div>
+        </li>
+        <li class="inner2">
+            <div class="inner4-a">周五</div>
+            <div class="inner4-b">08月16日</div>
+            <div class="inner4-p">
+                <img src="" alt="">
+            </div>
+            <div class="inner4-c">19~39℃</div>
+            <div class="inner4-d">多云</div>
+            <div class="inner4-e">
+                <div class="inner4-f">东北风</div>
+                <div class="inner4-h">2级</div>
+            </div>
+        </li>
+        <li class="inner2">
+            <div class="inner5-a">周六</div>
+            <div class="inner5-b">08月16日</div>
+            <div class="inner5-p">
+                <img src="" alt="">
+            </div>
+            <div class="inner5-c">19~39℃</div>
+            <div class="inner5-d">多云</div>
+            <div class="inner5-e">
+                <div class="inner5-f">东北风</div>
+                <div class="inner5-h">2级</div>
+            </div>
+        </li>
+    </ul>
+</div>
+</body>
+<script src="js/3.2.1.js"></script>
+<script>
+    var provinces=[];
+    var citys=[];
+    var data=[];
+    var dalay=[];
+    $.ajax({
+        url:"http://api.jisuapi.com/weather/city?appkey=625e403219a19732",
+        dataType:"jsonp",
+        success:function(r){
+            data=r.result;
+            provinces=$.grep(r.result,function(value){
+                if(value.parentid==0){
+                    return true;
+                }
+            });
+            $.each(provinces,function(index,value){
+//                console.log(value);
+                $("<option>").html(value.city).val(value.cityid).appendTo("#province");
+            })
+        }
+    });
+    $("#province").on("change blur",function(){
+        var id=$(this).val();
+        citys=$.grep(data,function(value){
+            if(value.parentid==id){
+                return true;
+            }
+        });
+//        console.log(citys);
+        $("#city").empty();
+        $.each(citys,function (index,value){
+//            console.log(value.city);
+            $("<option>").html(value.city).val(value.city).appendTo("#city");
+        })
+    });
+    $("#btn").click(function(){
+        var city=$('#city').val();
+        console.log(city);
+        $.ajax({
+            url:"http://api.jisuapi.com/weather/query?appkey=625e403219a19732&city="+city,
+            dataType:"jsonp",
+            success:function(r){
+                console.log(r);
+                if(status==0){
+//                    var src=;
+                    $('.word1-a').text(r.result.date);
+                    $('.word1-b').text(r.result.week);
+                    $('.word2').text(r.result.aqi.quality);
+                    $('.inner1-p img').attr('src','天气图标/weathercn/'+r.result.img+'.png');
+                    $('.wendu p').text(r.result.temp);
+                    $('#temp').text(r.result.weather);
+                    $('.inner1-b').text(r.result.templow+'~'+r.result.temphigh+"℃");
+                    $('.inner1-c').text(r.result.weather);
+                    $('.inner1-e').text(r.result.winddirect);
+                    $('.inner1-f').text(r.result.windpower);
+                    $('.inner2-a').text(r.result.daily['1'].week);
+                    $('.inner2-b').text(r.result.daily['1'].date);
+//                    var day=r.result.;
+                    $('.inner2-p img').attr('src','天气图标/weathercn/'+r.result.daily['1'].day.img+'.png');
+                    $('.inner2-c').text(r.result.daily['1'].night.templow+'~'+r.result.daily['1'].day.temphigh+"℃")
+                    $('.inner2-d').text(r.result.daily['1'].day.weather);
+                    $('.inner2-f').text(r.result.daily['1'].day.winddirect);
+                    $('.inner2-h').text(r.result.daily['1'].day.windpower);
+                    $('.inner3-a').text(r.result.daily['2'].week);
+                    $('.inner3-b').text(r.result.daily['2'].date);
+                    $('.inner3-p img').attr('src','天气图标/weathercn/'+r.result.daily['2'].day.img+'.png');
+                    $('.inner3-c').text(r.result.daily['2'].night.templow+'~'+r.result.daily['2'].day.temphigh+"℃")
+                    $('.inner3-d').text(r.result.daily['2'].day.weather);
+                    $('.inner3-f').text(r.result.daily['2'].day.winddirect);
+                    $('.inner3-h').text(r.result.daily['2'].day.windpower);
+                    $('.inner4-a').text(r.result.daily['3'].week);
+                    $('.inner4-b').text(r.result.daily['3'].date);
+                    $('.inner4-p img').attr('src','天气图标/weathercn/'+r.result.daily['3'].day.img+'.png');
+                    $('.inner4-c').text(r.result.daily['3'].night.templow+'~'+r.result.daily['3'].day.temphigh+"℃")
+                    $('.inner4-d').text(r.result.daily['3'].day.weather);
+                    $('.inner4-f').text(r.result.daily['3'].day.winddirect);
+                    $('.inner4-h').text(r.result.daily['3'].day.windpower);
+                    $('.inner5-a').text(r.result.daily['4'].week);
+                    $('.inner5-b').text(r.result.daily['4'].date);
+                    $('.inner5-p img').attr('src','天气图标/weathercn/'+r.result.daily['4'].day.img+'.png');
+                    $('.inner5-c').text(r.result.daily['4'].night.templow+'~'+r.result.daily['4'].day.temphigh+"℃")
+                    $('.inner5-d').text(r.result.daily['4'].day.weather);
+                    $('.inner5-f').text(r.result.daily['4'].day.winddirect);
+                    $('.inner5-h').text(r.result.daily['4'].day.windpower);
+                }
+            }
+        })
+    })
+    $.getScript('var remote_ip_info = {"ret":1,"start":-1,"end":-1,"country":"\u4e2d\u56fd","province":"\u5c71\u897f","city":"\u592a\u539f","district":"","isp":"","type":"","desc":""};',function(){
+        var city=remote_ip_info.city;
+    })
+</script>
+</html>

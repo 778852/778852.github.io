@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .scene {
+            width: 400px;
+            height: 400px;
+            /*border: 1px solid #ccc;*/
+            box-sizing: border-box;
+            /*margin: 0 auto;*/
+            background:url('1.img/2.a.jpg') center no-repeat;
+            background-size:cover;
+            float:left;
+            position:relative;
+        }
+
+        .block {
+            width: 20px;
+            height: 20px;
+            box-sizing: border-box;
+            /*border: 1px solid #ADFDE4;*/
+            border-radius: 50%;
+            float: left;
+        }
+
+        .snackbody {
+            background: #ADFDE4;
+        }
+
+        .snackhead {
+            /*background: red;*/
+            background:url('1.img/1.c.jpg') center no-repeat;
+            background-size:cover;
+        }
+
+        .food{
+            background: #7cff2c;
+            /*background:url('')*/
+        }
+        .container{
+            width:750px;
+            height:400px;
+            margin:0 auto;
+            display: flex;
+            justify-content: flex-start;
+        }
+        .left{
+            width:100px;
+            height: 400px;
+            background:#2fffed;
+            text-align: center;
+        }
+        .left input{
+            width:80px;
+            height:50px;
+            margin-top: 100px;
+        }
+        .right{
+            width:200px;
+            height:400px;
+            background: #2fffed;
+            text-align: center  ;
+        }
+        .cd{
+            width:150px;
+            height:80px;
+            margin: 30px auto;
+            text-align: center;
+            font-size: 20px;
+            color:#000;
+
+        }
+        .df{
+            width:100%;
+            height:40px;
+            background:#fff;
+        }
+        #zt{
+            width:80px;
+            height:40px;
+            margin:50px auto;
+            line-height:40px;
+            text-align:center;
+            font-size:16px;
+            background: #ECECEC;
+            cursor:pointer;
+        }
+        .alert{
+            position:absolute;
+            left:0;right:0;
+            top:0;bottom:0;
+            margin:auto;
+            width:150px;
+            height:60px;
+            background:#fff;
+            font-size: 30px;
+            color:#000;
+            line-height:60px;
+            text-align:center;
+            font-weight:800;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="left">
+        <input type="button" value="开始游戏" id="start">
+        <input type="button" value="重新开始" id="restart">
+    </div>
+    <div class="scene">
+        <div class="alert">你完了!!</div>
+    </div>
+    <div class="right">
+        <div class="cd">
+            得分
+            <div class="df">0</div>
+        </div>
+        <div id="zt">暂停</div>
+    </div>
+</div>
+</body>
+<script src='3.2.1.js'></script>
+<script>
+    for (var i=0; i < 20; i++) {
+        for (var j=0; j < 20; j++) {
+            $("<div></div>").addClass("block").attr("id", j + "-" + i).appendTo(".scene");
+        }
+    }
+    var snackArr=[{x: 0, y: 0}, {x: 1, y: 0}, {x: 2, y: 0}];
+    var snackHead=snackArr[snackArr.length - 1];
+    function drawSnack() {
+        $(".snackbody").removeClass("snackbody");
+        $(".snackhead").removeClass("snackhead");
+        $.each(snackArr, function (index, value) {
+            $("#" + value.x + "-" + value.y).addClass("snackbody");
+        });
+        $("#" + snackHead.x + "-" + snackHead.y).addClass("snackhead");
+        $('.df').html(snackArr.length-3);
+    }
+    drawSnack();
+    var dir="r";
+    function move() {
+        switch (dir) {
+            case "r":
+                snackHead={x: snackHead.x + 1, y: snackHead.y};
+                break;
+            case "l":
+                snackHead={x: snackHead.x - 1, y: snackHead.y};
+                break;
+            case "t":
+                snackHead={x: snackHead.x, y: snackHead.y - 1};
+                break;
+            case "b":
+                snackHead={x: snackHead.x, y: snackHead.y + 1};
+                break;
+        }
+        snackArr.push(snackHead);
+        var head=$("#"+snackHead.x+"-"+snackHead.y);
+        if(head.hasClass("snackbody")||head.length===0){
+            $('.alert').show(500);
+            clearInterval(st);
+//            location.reload();
+        }
+        if(head.hasClass("food")){
+            head.removeClass("food");
+            createFood();
+        }else{
+            snackArr.shift();
+        }
+        drawSnack();
+    }
+    let st;
+    $('#start').click(function(){
+        st=setInterval(move, 200);
+    });
+    $('#zt').click(function(){
+        clearInterval(st);
+        $(this).text('继续');
+    });
+    $('#restart').click(function(){
+        drawSnack();
+    });
+    $(document).keydown(function (e) {
+        switch (e.keyCode) {
+            case 65:
+            case 37:
+                dir="l";
+                break;
+            case 87:
+            case 38:
+                dir="t";
+                break;
+            case 68:
+            case 39:
+                dir="r";
+                break;
+            case 83:
+            case 40:
+                dir="b";
+                break;
+        }
+    });
+    function createFood() {
+        do {
+            var rx=Math.floor(Math.random() * 20);
+            var ry=Math.floor(Math.random() * 20);
+        }while($("#"+rx+"-"+ry).hasClass("snackbody"));
+        $("#"+rx+"-"+ry).addClass("food");
+    }
+    createFood();
+</script>
+</html>
