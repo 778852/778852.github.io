@@ -1,0 +1,20 @@
+.professional-t{
+    font-size:16px;
+    color:#333c41;
+}
+.professional{
+    width:300px;
+    border: 1px dashed #b7ff4d;
+    border-radius: 50%;
+    background: #e4fffa;
+}
+.subject-p{
+    width: 180px;
+    /* max-width: 100%; */
+    height: 180px;
+}
+.subject-p img{
+    width: 180px;
+    /* max-width: 100%; */
+    height: 180px;
+}
